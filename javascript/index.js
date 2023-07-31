@@ -93,6 +93,7 @@ obtainInstruction("steak",0)
 
   .then((step8) => {
     document.querySelector("#steak").innerHTML += `<li>${step8}</li>`;
+    document.querySelector("#steakImg").removeAttribute("hidden");
   })
 
   .catch((error) => {
@@ -126,9 +127,8 @@ async function makeBroccoli() {
 
     const response7 = await obtainInstruction("broccoli",6)
     document.querySelector("#broccoli").innerHTML += `<li>${response7}</li>`;
-    
-    const response8 = await obtainInstruction("broccoli",7)
-    document.querySelector("#broccoli").innerHTML += `<li>${response8}</li>`;
+    document.querySelector("#broccoliImg").removeAttribute("hidden");
+
   }
 
   catch (error) {
@@ -140,6 +140,7 @@ makeBroccoli()
 
 // Bonus 2 - Promise all
 // ...
+
 Promise.all([
   obtainInstruction("brusselsSprouts",0),
   obtainInstruction("brusselsSprouts",1),
@@ -149,10 +150,8 @@ Promise.all([
   obtainInstruction("brusselsSprouts",5),
   obtainInstruction("brusselsSprouts",6),
   obtainInstruction("brusselsSprouts",7),
-  obtainInstruction("brusselsSprouts",8),
- 
 ])
-  .then(() => {
+  .then((step) => {
     document.querySelector("#brusselsSprouts").innerHTML += `<li>${step[0]}</li>`;
     document.querySelector("#brusselsSprouts").innerHTML += `<li>${step[1]}</li>`;
     document.querySelector("#brusselsSprouts").innerHTML += `<li>${step[2]}</li>`;
@@ -161,8 +160,12 @@ Promise.all([
     document.querySelector("#brusselsSprouts").innerHTML += `<li>${step[5]}</li>`;
     document.querySelector("#brusselsSprouts").innerHTML += `<li>${step[6]}</li>`;
     document.querySelector("#brusselsSprouts").innerHTML += `<li>${step[7]}</li>`;
-    document.createElement("#brusselsSprouts").innerHTML += `<li>${"Brussels sprouts are ready!"}</li>`;
+    document.querySelector("#brusselsSprouts").innerHTML += `<li>Brussels sprouts are ready!</li>`;
+    document.querySelector("#brusselsSproutsImg").removeAttribute("hidden");
+
   })
+
   .catch((error) => {
     console.log(error)
   })
+
